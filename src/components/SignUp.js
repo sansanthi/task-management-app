@@ -1,37 +1,31 @@
-import "../scss/login.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useAuth } from "./auth";
-import { auth } from "../firebase";
+import { useAuth } from "./auth"
 
-export default function Login() {
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const { login } = useAuth();
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
-
-//   const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    setUser((prevUser) => ({ ...prevUser, [e.target.name]: e.target.value }));
-  };
-  const handleSubmit = async (e) => {
+export default function SignUp() {
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+    const { signup } = useAuth();
+    const [user, setUser] = useState({
+        email: '',
+        password: '',
+    })
+    const handleChange = (e) => {
+        setUser(prevUser=> ({...prevUser, [e.target.name]: e.target.value}))
+    }
+   const handleSubmit = async(e) => {
     e.preventDefault();
     try {
-      setError("");
-      await login(user.email, user.password);
-    //   localStorage.setItem(user);
-      navigate("/");
+        setError('')
+        await(signup(user.email, user.password))
+        navigate('/')
     } catch {
-      setError("Failed to login");
+        setError('Failed to create account')
     }
   };
   return (
     <div className="login-card">
-      <h1>Login</h1>
+      <h1>SignUp</h1>
       {error && <p>{error}</p>}
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="input-control">
@@ -57,12 +51,12 @@ export default function Login() {
           />
         </div>
         <button type="submit" className="login-btn">
-          Login
+          Sign Up
         </button>
       </form>
       <p>
         You doesn't have already account?
-        <span className="register-link"><Link to="/signup">Signup</Link></span>
+        <span className="register-link"><Link to="/login">Login</Link></span>
       </p>
     </div>
   );
