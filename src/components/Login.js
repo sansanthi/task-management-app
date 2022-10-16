@@ -31,7 +31,7 @@ export default function Login() {
   };
   return (
     <div className="login-card">
-      <h1>Login</h1>
+      <h1 className="login">Login</h1>
       {error && <p>{error}</p>}
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="input-control">
