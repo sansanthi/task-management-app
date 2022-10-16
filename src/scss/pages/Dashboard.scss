@@ -1,0 +1,254 @@
+@use '../global.scss';
+
+
+.dashboard {
+    height: 100vh;
+    width: 100vw;
+    background-color: global.$gray-color-2;
+    // display: flex;
+}
+
+.sidebar,.show-sidebar {
+    display: none;
+}
+
+.logo-content, .menu {
+    display: flex;
+    align-items: center;
+}
+
+.logo-content {
+    padding: 2rem;
+}
+
+.logo {
+    margin-right: 1rem;
+}
+.menu-section {
+    color: global.$gray-color-1;
+}
+.menu-count {
+    display: block;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    letter-spacing: .2rem;
+}
+.menus {
+    display: flex;
+    flex-direction: column;
+}
+.menu {
+    padding: 1.25rem 2.4rem 1.25rem 2rem;
+    margin-right: 1.5rem;
+    border-top-right-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    font-size: 1.5rem;
+    &-icon {
+        margin-right: 1rem;
+    }
+
+    &-add {
+        color: global.$purple-color-1;
+    }
+    &:first-child {
+        background-color: global.$purple-color-1;
+        color: global.$color-white;
+    }
+}
+.header-page {
+    background-color: global.$color-white;
+    .logo-content {
+        display: none;
+    }
+}
+.header {
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 1.6rem;
+}
+.header--menu {
+    display: flex;
+    align-items: center;
+   
+}
+
+.menu-name {
+    justify-self: flex-start;
+}
+.page-name {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: global.$dark-color-1;
+}
+.task-add {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.add-btn {
+    display: block;
+    width: 4.8rem;
+    padding: .5rem 0;
+    text-align: center;
+    border-radius: 2rem;
+    border-color: transparent;
+    background-color: rgba($color: #635FC7, $alpha: .25);
+}
+
+
+// Content
+.content-box {
+    height: 100%;
+
+    background-color: global.$gray-color-2;
+    color: #828FA3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.full-page {
+    margin-left: 0;
+}
+.empty-condition {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.btn--purple {
+    background-color: global.$purple-color-1;
+}
+.btn--lightpurple {
+    background-color: global.$purple-color-1;
+    opacity: .4;
+}
+.task-add-btn {
+    font-family: inherit;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: global.$color-white;
+    border-color: transparent;
+    border-radius: 2rem;
+    padding: 1rem 1.5rem;
+    
+    div {
+        display: flex;
+        align-items: center;
+    }
+}
+.task-add-btn .task-text {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+// Settings
+.settings {
+    margin-top: auto;
+}
+.theme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    margin: 0 1rem;
+    background-color: global.$gray-color-2;
+}
+.hide-sidebar {
+    margin: 0 1rem;
+    display: flex;
+    gap: 1rem;
+    padding: 2rem 0;
+    font-size: 1.5rem;
+    color: global.$gray-color-1;
+}
+
+@media screen and (min-width: 600px) {
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+    }
+    .sidebar {
+        background-color: global.$color-white;
+        width: 26rem;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        overflow-x: hidden;
+        text-align: left;
+        border-right: 1px solid rgba($color: global.$border-color, $alpha: .25);
+        // box-shadow: 0 1rem 3rem rgba(0, 0 , 0, .1);
+        transform: translateX(0);
+        transition: all .3s;
+    
+        ul {
+            list-style: none;
+        }
+        
+        
+    }
+    .header--sidebar {
+        margin-left: 26rem; 
+    }
+    .header--menu .logo-img {
+        display: none;
+    }
+    .sidebar--close {
+        transform: translateX(-100%);
+    }
+    .show-sidebar {
+        display: block;
+        position: absolute;
+        bottom: 2rem;
+        left: 0;
+        background-color: global.$purple-color-1;
+        color: global.$color-white;
+        padding: 2rem;
+        border-color: transparent;
+        border-top-right-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+    }
+    
+    .task-add-btn .task-text {
+        visibility: visible;
+        height: auto;
+        width: auto;
+        margin-left: .5rem;
+    }
+    .content-sidebar {
+        margin-left: 26rem;
+    }
+
+}
+
+// @media screen and (min-width: 600px) and (max-width: 900px) {
+    
+// }
+@media  screen and (min-width: 900px) {
+    .header-page {
+        display: flex;
+        align-items: center;
+        background-color: global.$color-white;
+        .logo-content {
+            display: flex;
+            width: 18rem;
+            border-right: 1px solid rgba($color: global.$border-color, $alpha: .25);
+        }
+        .header {
+            width: 100%;
+        }
+    }
+    .header {
+        margin-left: calc(26rem - 16rem);
+    }
+    .full-page.header {
+        margin-left: 0;
+    }
+}
